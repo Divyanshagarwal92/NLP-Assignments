@@ -1,0 +1,39 @@
+
+
+Ques - 4
+
+1. python count_freqs.py ner_train.dat > ner.count
+   - get the counts for wordtags and ngrams
+
+2. python infrequentWordsRemoval.py ner_train ner.counts
+   - generates a file rareWords and post_ner_train.dat ( modified ner_train.dat)
+
+3. python counts_freqs.py post_ner_train.dat > post_ner.counts
+   - generates the new counts
+
+4. python ques4.py post_ner.count ner_dev.dat
+   - creates a prediction file (prediction) based on simple NER tagger using just the emission parameters
+
+5. python eval_ne_tagger.py ner_dev.key prediction
+   - Results:
+
+		 precision 	recall 		F1-Score
+	Total:	 0.221961	0.525544	0.312106
+	PER:	 0.435451	0.231230	0.302061
+	ORG:	 0.475936	0.399103	0.434146
+	LOC:	 0.147750	0.870229	0.252612
+	MISC:	 0.491689	0.610206	0.544574 
+
+Ques - 5
+
+1. python ques5.py post post_ner.counts ner_dev.dat > trigramEstimates
+   - log probability of trigram estimates saved to file trigramEstimates
+   - created a prediction file (prediction.viterbi) based on a HMM based NER tagger
+
+   - Comments:
+   1. The tagging part of the code runs for more than 20 mins. I could not figure out a way to lessen the running time.
+   2. Accuracy is way less than the accuracy given in the baseline results.
+   3. I have implemented the entire algorithm. However, I could not get the desired results. 
+
+Ques 6 
+  - Not attempted

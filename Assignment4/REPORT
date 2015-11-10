@@ -1,0 +1,102 @@
+README
+
+Divyansh Agarwal
+da2629
+
+
+Ques 4:
+
+Run:
+  *Decode using the pretrained model tag.model 
+  python ques4.py tag.model tag_dev.dat tag_dev.out
+
+Evaluation:
+  python eval_tagger.py tag_dev.key tag_dev.out
+  
+  *Obtained an accuracy of 90.52% on development set.
+  *Correctly tagged 2226 out 2459 words	
+
+Ques 5:
+
+Run:
+  *Learn suffix_tagger.model
+  python ques5.py tag_train.dat suffix_tagger.model
+  
+  *Decode tag_dev.dat using the suffix_tagger.model
+  python ques4.py suffix_tagger.model tag_dev.dat suffix_tag_dev.out 
+
+Evaluation
+  	
+  python eval_tagger.py tag_dev.key tag_dev.out
+
+  
+  *Obtained an accuracy of 92.11% on development set.
+  *Correctly tagged 2265 out 2459 words	
+
+Ques 6:
+
+Run:
+  python ques6.py tag_train.dat <model_name> <feature_selection_flag>
+	<feature_selection_flag> : 0 - 3
+                flag = 1: Consider suffix features
+                flag = 2: Consider number features
+                flag = 3: Consider first letter of the word is capital features.
+                flag = 4: Consider prefix features
+                flag = 0: Consider all of the above 
+  
+*Decode tag_dev.dat using the suffix_tagger.model
+  python ques4.py <model_name> tag_dev.dat <decoded_tag_dev.out>
+
+Evaluation:
+
+  python eval_tagger.py tag_dev.key <decoded_tag_dev.out>
+	
+  all - features:
+  *Obtained an accuracy of 90.85% on development set.
+  *Correctly tagged 2234 out 2459 words	
+  
+  suffix - features:
+  *Obtained an accuracy of 92.11% on development set.
+  *Correctly tagged 2265 out 2459 words	
+  
+  number - features
+  *Obtained an accuracy of 89.55 on development set
+  *Correctly tagged 2202 out of 2459 words 
+
+  first letter of word is capital features
+  *Obtained accuracy of 88.17% on development set
+  *Correctly tagged 2168 out of 2459 words
+
+  prefix-suffix features
+  *Obtained accuracy of 88.67% on development set
+  *Correctly tagged 2205 out of 2459 words
+
+Observation:
+  Surprisingly I was not able to better the 92.11% benchmark of suffix tagger despite all the different combinations.
+
+
+Sample Commands for ques 6:
+
+python ques6.py tag_train.dat all_tagger.model 0
+python ques4.py all_tagger.model tag_dev.dat all_tag_dev.out 
+python eval_tagger.py tag_dev.key all_tag_dev.out 
+
+python ques6.py tag_train.dat suffix_tagger.model 1
+python ques4.py suffix_tagger.model tag_dev.dat suffix_tag_dev.out 
+python eval_tagger.py tag_dev.key suffix_tag_dev.out 
+
+python ques6.py tag_train.dat number_tagger.model 2
+python ques4.py number_tagger.model tag_dev.dat number_tag_dev.out 
+python eval_tagger.py tag_dev.key number_tag_dev.out 
+
+python ques6.py tag_train.dat capital_tagger.model 3
+python ques4.py capital_tagger.model tag_dev.dat capital_tag_dev.out 
+python eval_tagger.py tag_dev.key capital_tag_dev.out 
+
+python ques6.py tag_train.dat prefix_tagger.model 4
+python ques4.py prefix_tagger.model tag_dev.dat prefix_tag_dev.out 
+python eval_tagger.py tag_dev.key prefix_tag_dev.out 
+
+python ques6.py tag_train.dat pre-suf_tagger.model 5
+python ques4.py pre-suf_tagger.model tag_dev.dat pre-suf_tag_dev.out 
+python eval_tagger.py tag_dev.key pre-suf_tag_dev.out 

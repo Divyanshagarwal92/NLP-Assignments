@@ -1,0 +1,48 @@
+
+1. Running:
+   Ques4: ( Time 210 sec)
+	./q4.sh
+   Ques5: ( Time 6 mins)
+        ./q5.sh
+   Ques6: ( Time 1 min)
+	./q6.sh
+
+2. Result files created:
+   Ques4:
+	devwords_outputfile_IBM1.txt
+	alignment_outputfile_IBM1.txt
+	transmission_Parameters_IBM1
+   Ques5:
+	alignment_outputfile_IBM2.txt
+	transmission_Parameters_IBM2
+	alignment_Parameters_IBM2
+   Ques6:
+	unscrambled.en
+
+3. Results
+  Ques4:
+	Comments: There are 3 misalignments for IBM model-1 on comparing with the alignment_sample_model1.txt file
+
+  Ques5:
+	Comments: There are 9 misalignments for IBM model-2 on comparing with the alignment_sample_model2.txt file.
+	However, this model is still a lot more robust and the above performance comparison is not a good way
+	to comment on their performance
+  Ques6:
+	Comments: Unseen/rare words could lead to better results.
+	Evaluation of results:
+	Right	Total	Acc
+	91	100	0.910
+
+
+Information about output files:
+alignment_sample_model1.txt, alignment_sample_model1.txt - Sample alignment output.
+
+sample_t_model1.txt, Sample output for top 10 translations.
+
+devwords.txt - English words list for q4 and q5.
+
+corpus.en.gz, corpus.de.gz - Corpus for q4 - q6.
+
+original.de, original.en, scrambled.en - Data for q6.
+
+eval_scramble.py - Evaluation for q6
